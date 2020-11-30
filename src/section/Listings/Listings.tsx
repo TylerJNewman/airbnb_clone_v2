@@ -10,7 +10,7 @@ import {
   DeleteListingVariables,
 } from './__generated__/DeleteListing'
 import {List, Avatar, Button, Spin} from 'antd'
-import './styles/Listings.module.css'
+import styles from './styles/Listings.module.css'
 import {ListingsSkeleton} from './components'
 
 export const LISTINGS = gql`
@@ -56,7 +56,7 @@ function ListingList({listings}: ListingListProps) {
   if (!listings || listings.length === 0) return <div>No listings....</div>
 
   return (
-    <>
+    <div>
       <Spin spinning={loading}></Spin>
       <List
         itemLayout="horizontal"
@@ -81,7 +81,7 @@ function ListingList({listings}: ListingListProps) {
           </List.Item>
         )}
       />
-    </>
+    </div>
   )
 }
 
@@ -90,7 +90,7 @@ export function Listings({title}: {title: string}) {
   const listings = data?.listings ?? null
   if (loading) {
     return (
-      <div className="listings">
+      <div className={styles.listings}>
         <ListingsSkeleton title={title} error={!!error} />
       </div>
     )
@@ -101,7 +101,7 @@ export function Listings({title}: {title: string}) {
   }
 
   return (
-    <div className="listings">
+    <div className={styles.listings}>
       <h2>{title}</h2>
       <ListingList listings={listings} />
     </div>

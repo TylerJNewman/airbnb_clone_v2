@@ -1,8 +1,8 @@
-import {initializeApollo} from '../lib/apollo'
+import {initializeApollo} from '../utils/apollo'
 import gql from 'graphql-tag'
 import {useQuery} from '@apollo/client'
 import {Listings} from 'section'
-import {connectToDatabase} from 'apolloServer/database'
+import {connectToDatabase} from 'apollo/database'
 
 const ListingsQuery = gql`
   query ListingsQuery {
@@ -24,6 +24,7 @@ const Index = () => {
   const {
     data: {listings},
   } = useQuery(ListingsQuery)
+
   return <Listings title="Airbnb Clone Listings" />
 }
 
