@@ -55,6 +55,7 @@ export interface User {
 export interface Database {
   listings: Collection<Listing>
   users: Collection<User>
+  bookings: Collection<Booking>
 }
 
 export interface DatabaseConnection {

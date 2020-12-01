@@ -28,7 +28,7 @@ async function connectToDatabase() {
     console(err),
   )
   const db = client.db(MONGODB_DB)
-  const listingsCollection = db.collection('test_listings')
+  const listingsCollection = db.collection('listings')
   return {listingsCollection, client}
 }
 
