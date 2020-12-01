@@ -29,6 +29,11 @@ function createIsomorphLink(context: ResolverContext = {}) {
 
 function createApolloClient(context?: ResolverContext) {
   return new ApolloClient({
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': 'true',
+    },
     ssrMode: typeof window === 'undefined',
     link: createIsomorphLink(context),
     cache: new InMemoryCache(),

@@ -16,7 +16,6 @@
     "@ant-design/icons": "4.2.1",
     "@next/bundle-analyzer": "^9.1.4",
     "antd": "4.3.0",
-    "apollo-server-express": "^2.19.0",
     "babel-plugin-import": "1.13.0",
     "cross-env": "^7.0.2",
     "dayjs": "1.8.28",
