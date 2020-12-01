@@ -6,6 +6,7 @@
     "build": "next build",
     "start": "next start",
     "seed": "node --trace-warnings temp/seed.mjs",
+    "clear": "node --trace-warnings temp/clear.mjs",
     "buildSchema": "node --experimental-modules temp/buildSchema.js",
     "codegen:generate": "apollo client:codegen --localSchemaFile=schema.json --includes=src/**/*.tsx --target=typescript"
   },

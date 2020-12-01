@@ -1,50 +1,34 @@
-import pkg from 'mongodb'
-const {MongoClient} = pkg
+import connectToDatabase from './database.mjs'
 import listings from './listings.mjs'
 import users from './users.mjs'
-import dotenv from 'dotenv'
-dotenv.config()
 
-const {MONGODB_URI, MONGODB_DB} = process.env
-
-if (!MONGODB_URI) {
-  throw new Error(
-    'Please define the MONGODB_URI environment variable inside .env.local',
-  )
-}
-
-if (!MONGODB_DB) {
-  throw new Error(
-    'Please define the MONGODB_DB environment variable inside .env.local',
-  )
-}
-
-async function connectToDatabase() {
-  const opts = {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-  const client = await MongoClient.connect(MONGODB_URI, opts).catch((err) =>
-    console(err),
-  )
-  const db = client.db(MONGODB_DB)
-  const listingsCollection = db.collection('listings')
-  return {listingsCollection, client}
-}
+let mongoClient
 
 const seed = async () => {
   try {
     console.log(`[seed] : running...`)
-    const {listingsCollection, client} = await connectToDatabase()
 
+    const {db, client} = await connectToDatabase()
+    mongoClient = client
+
+    console.log(`[seed] : begin seeding of listings...`)
     for (const listing of listings) {
-      await listingsCollection.insertOne(listing)
+      await db.listings.insertOne(listing)
     }
+    console.log(`[seed] : sucessfully seeded listings`)
+
+    console.log(`[seed] : begin seeding of users...`)
+    for (const user of users) {
+      await db.users.insertOne(user)
+    }
+    console.log(`[seed] : sucessfully seeded users`)
 
     console.log(`Successfully seeded database...`)
-    client.close()
   } catch (error) {
+    console.dir(error)
     throw new Error('failed to seed database')
+  } finally {
+    mongoClient?.close()
   }
 }
 
