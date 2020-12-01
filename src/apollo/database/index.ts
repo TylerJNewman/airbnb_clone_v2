@@ -1,4 +1,4 @@
-import {User, DatabaseConnection} from 'apollo/lib/types'
+import {User, Listing, Booking, DatabaseConnection} from 'apollo/lib/types'
 import {MongoClient} from 'mongodb'
 
 const {MONGODB_URI, MONGODB_DB} = process.env
@@ -41,7 +41,8 @@ export async function connectToDatabase(): Promise<DatabaseConnection> {
       })
       .then((db) => {
         conn.db = {
-          listings: db.collection('test_listings'),
+          bookings: db.collection<Booking>('bookings'),
+          listings: db.collection<Listing>('listings'),
           users: db.collection<User>('users'),
         }
         cached.conn = conn
