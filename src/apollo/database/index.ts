@@ -1,4 +1,4 @@
-import {Database} from 'apollo/lib/types'
+import {User, DatabaseConnection} from 'apollo/lib/types'
 import {MongoClient} from 'mongodb'
 
 const {MONGODB_URI, MONGODB_DB} = process.env
@@ -15,11 +15,6 @@ if (!MONGODB_DB) {
   )
 }
 
-interface IConnectToDabase {
-  client: MongoClient
-  db: Database | undefined
-}
-
 /**
  * Global is used here to maintain a cached connection across hot reloads
  * in development. This prevents connections growing exponentiatlly
@@ -30,7 +25,7 @@ let cached = global.mongo
 // @ts-ignore:disable-next-line
 if (!cached) cached = global.mongo = {}
 
-export async function connectToDatabase(): Promise<IConnectToDabase> {
+export async function connectToDatabase(): Promise<DatabaseConnection> {
   if (cached.conn) return cached.conn
   if (!cached.promise) {
     const conn = {client: undefined, db: undefined}
@@ -42,11 +37,13 @@ export async function connectToDatabase(): Promise<IConnectToDabase> {
       .then((client) => {
         conn.client = client
         const db = client.db(MONGODB_DB)
-        const listings = db.collection('test_listings')
-        return {listings}
+        return db
       })
       .then((db) => {
-        conn.db = db
+        conn.db = {
+          listings: db.collection('test_listings'),
+          users: db.collection<User>('users'),
+        }
         cached.conn = conn
       })
   }
