@@ -1,5 +1,12 @@
 import {Collection, ObjectId, ClientSession} from 'mongodb'
 
+export interface Viewer {
+  _id?: string
+  token?: string
+  avatar?: string
+  walletId?: string
+  didRequest: boolean
+}
 export interface BookingsIndexMonth {
   [key: string]: boolean
 }

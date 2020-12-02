@@ -25,6 +25,7 @@
     "dayjs": "1.8.28",
     "deepmerge": "^4.2.2",
     "esm": "^3.2.25",
+    "googleapis": "^65.0.0",
     "graphql": "^15.4.0",
     "mongodb": "^3.6.3",
     "next": "latest",
