@@ -11,4 +11,4 @@ async function build() {
   )
 }
 
-build()
+build().catch((err) => console.dir(err))

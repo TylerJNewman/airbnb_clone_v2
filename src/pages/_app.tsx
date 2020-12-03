@@ -8,10 +8,18 @@ import '../styles/global.css'
 import {AppProps} from 'next/app'
 import {ApolloProvider} from '@apollo/client'
 import {useApollo} from '../utils/apollo'
+import {Viewer} from 'types'
+
+const initialViewer: Viewer = {
+  id: null,
+  token: null,
+  avatar: null,
+}
 
 export default function App({Component, pageProps}: AppProps) {
   const apolloClient = useApollo(pageProps.initialApolloState)
 
+  const [viewer, setViewer] = React.useState<Viewer>(initialViewer)
   return (
     <>
       <Head>
