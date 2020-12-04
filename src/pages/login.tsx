@@ -1,7 +1,10 @@
 import React from 'react'
-import {useSession, signIn, signOut} from 'next-auth/client'
+import {useApolloClient} from '@apollo/client'
 import {Card, Layout, Typography} from 'antd'
 import styles from '../styles/pages/login.module.css'
+// import {LOG_IN} from 'utils/mutations/LogIn'
+import {AUTH_URL} from 'utils/queries/AuthUrl'
+import {AuthUrl as AuthUrlData} from 'utils/queries/AuthUrl/__generated__/AuthUrl'
 
 // Image Assets
 const googleLogo = '/google_logo.jpg'
@@ -10,31 +13,32 @@ const {Content} = Layout
 const {Text, Title} = Typography
 
 const Login = () => {
-  const [session] = useSession()
+  const client = useApolloClient()
 
-  const handleLogin = (e) => {
-    e.preventDefault()
-    signIn('google')
+  const handleAuthorize = async () => {
+    try {
+      const {data} = await client.query<AuthUrlData>({
+        query: AUTH_URL,
+      })
+    } catch {}
   }
 
-  const handleLogout = (e) => {
-    e.preventDefault()
-    signOut()
-  }
+  // const [
+  //   logIn,
+  //   {data: logInData, loading: logInLoading, error: logInError},
+  // ] = useMutation<LogInData, LogInVariables>(LOG_IN)
+  // const logInRef = React.useRef(logIn)
 
-  if (session)
-    return (
-      <>
-        <img
-          src={session.user.image}
-          className="user"
-          style={{width: 100, height: 100}}
-        />
-        <a href="#" onClick={handleLogout} className="logout">
-          Logout
-        </a>
-      </>
-    )
+  // React.useEffect(() => {
+  //   const code = new URL(window.location.href).searchParams.get('code')
+  //   if (code) {
+  //     logInRef.current({
+  //       variables: {
+  //         input: {code},
+  //       },
+  //     })
+  //   }
+  // }, [])
 
   return (
     <Content className={styles.log_in}>
@@ -51,7 +55,7 @@ const Login = () => {
           <Text>Sign in with Google to start booking available rentals!</Text>
         </div>
         <button
-          onClick={handleLogin}
+          onClick={handleAuthorize}
           className={styles.log_in_card__google_button}
         >
           <img

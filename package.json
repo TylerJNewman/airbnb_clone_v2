@@ -8,7 +8,7 @@
     "seed": "node --trace-warnings temp/seed.mjs",
     "clear": "node --trace-warnings temp/clear.mjs",
     "buildSchema": "node --experimental-modules temp/buildSchema.js",
-    "codegen:generate": "apollo client:codegen --localSchemaFile=schema.json --includes=src/**/*.ts --globalTypesFile=./src/lib/graphql/globalTypes.ts --target=typescript"
+    "codegen:generate": "apollo client:codegen --localSchemaFile=schema.json --includes=src/utils/queries/**/*.ts --globalTypesFile=./src/apollo/graphql/globalTypes.ts --target=typescript"
   },
   "dependencies": {
     "@ant-design/icons": "4.2.1",
