@@ -18,6 +18,17 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+#__next {
+  height: 100%;
+  display: flex;
+}
+
+#app {
+  position: relative;
+  background: #fff;
+  min-height: 100vh;
+}
+
 .text-left {
   text-align: left !important;
 }

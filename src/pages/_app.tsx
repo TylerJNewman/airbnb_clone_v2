@@ -1,9 +1,11 @@
 import * as React from 'react'
 import Head from 'next/head'
+import {Layout} from 'antd'
 
 import 'antd/dist/antd.css'
 import '../styles/vars.css'
 import '../styles/global.css'
+// import '../styles/styles.css' // turn on and off for reference for local
 
 import {AppProps} from 'next/app'
 import {ApolloProvider} from '@apollo/client'
@@ -38,7 +40,9 @@ export default function App({Component, pageProps}: AppProps) {
         <link rel="manifest" href="/manifest.json" />
       </Head>
       <ApolloProvider client={apolloClient}>
-        <Component {...pageProps} />
+        <Layout id="app">
+          <Component {...pageProps} />
+        </Layout>
       </ApolloProvider>
     </>
   )
