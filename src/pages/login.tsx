@@ -20,6 +20,8 @@ const Login = () => {
       const {data} = await client.query<AuthUrlData>({
         query: AUTH_URL,
       })
+      console.log({data})
+      window.location.href = data.authUrl
     } catch {}
   }
 
