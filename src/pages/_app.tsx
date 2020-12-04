@@ -1,4 +1,9 @@
 import * as React from 'react'
+import {AppProps} from 'next/app'
+import {ApolloProvider} from '@apollo/client'
+import {Provider} from 'next-auth/client'
+import {useApollo} from '../utils/apollo'
+import {Viewer} from 'types'
 import Head from 'next/head'
 import {Layout} from 'antd'
 
@@ -7,15 +12,12 @@ import '../styles/vars.css'
 import '../styles/global.css'
 // import '../styles/styles.css' // turn on and off for reference for local
 
-import {AppProps} from 'next/app'
-import {ApolloProvider} from '@apollo/client'
-import {useApollo} from '../utils/apollo'
-import {Viewer} from 'types'
-
 const initialViewer: Viewer = {
   id: null,
   token: null,
   avatar: null,
+  hasWallet: null,
+  didRequest: false,
 }
 
 export default function App({Component, pageProps}: AppProps) {
@@ -39,11 +41,13 @@ export default function App({Component, pageProps}: AppProps) {
         />
         <link rel="manifest" href="/manifest.json" />
       </Head>
-      <ApolloProvider client={apolloClient}>
-        <Layout id="app">
-          <Component {...pageProps} />
-        </Layout>
-      </ApolloProvider>
+      <Provider session={pageProps.session}>
+        <ApolloProvider client={apolloClient}>
+          <Layout id="app">
+            <Component {...pageProps} />
+          </Layout>
+        </ApolloProvider>
+      </Provider>
     </>
   )
 }

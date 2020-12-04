@@ -1,4 +1,5 @@
 import React from 'react'
+import {useSession, signIn, signOut} from 'next-auth/client'
 import {Card, Layout, Typography} from 'antd'
 import styles from '../styles/pages/login.module.css'
 
@@ -9,6 +10,32 @@ const {Content} = Layout
 const {Text, Title} = Typography
 
 const Login = () => {
+  const [session] = useSession()
+
+  const handleLogin = (e) => {
+    e.preventDefault()
+    signIn('google')
+  }
+
+  const handleLogout = (e) => {
+    e.preventDefault()
+    signOut()
+  }
+
+  if (session)
+    return (
+      <>
+        <img
+          src={session.user.image}
+          className="user"
+          style={{width: 100, height: 100}}
+        />
+        <a href="#" onClick={handleLogout} className="logout">
+          Logout
+        </a>
+      </>
+    )
+
   return (
     <Content className={styles.log_in}>
       <Card className={styles.log_in_card}>
@@ -23,7 +50,10 @@ const Login = () => {
           </Title>
           <Text>Sign in with Google to start booking available rentals!</Text>
         </div>
-        <button className={styles.log_in_card__google_button}>
+        <button
+          onClick={handleLogin}
+          className={styles.log_in_card__google_button}
+        >
           <img
             src={googleLogo}
             alt="Google Logo"

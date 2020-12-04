@@ -21,9 +21,12 @@ const ListingsQuery = gql`
 `
 
 const Index = () => {
-  const {
-    data: {listings},
-  } = useQuery(ListingsQuery)
+  // const {
+  //   data: {listings},
+  // } = useQuery(ListingsQuery)
+  const listings = null
+
+  if (!listings) return <>no listings</>
 
   return <Listings title="Airbnb Clone Listings" />
 }
