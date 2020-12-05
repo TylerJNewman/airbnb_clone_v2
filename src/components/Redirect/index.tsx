@@ -7,5 +7,5 @@ interface Props {
 export const Redirect = ({to}: Props) => {
   const router = useRouter()
   router.push(to)
-  return ''
+  return <></>
 }

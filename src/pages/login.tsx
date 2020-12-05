@@ -24,13 +24,16 @@ const initialViewer: Viewer = {
 // Image Assets
 const googleLogo = '/google_logo.jpg'
 
+interface Props {
+  setViewer: (viewer: Viewer) => void
+}
+
 const {Content} = Layout
 const {Text, Title} = Typography
 
-const Login = () => {
+export const Login = () => {
   const [viewer, setViewer] = React.useState<Viewer>(initialViewer)
   const client = useApolloClient()
-
   const [
     logIn,
     {data: logInData, loading: logInLoading, error: logInError},
@@ -38,10 +41,10 @@ const Login = () => {
     onCompleted: (data) => {
       if (data && data.logIn) {
         setViewer(data.logIn)
+        displaySuccessNotification("You've successfully logged in!")
       }
     },
   })
-
   const logInRef = React.useRef(logIn)
 
   React.useEffect(() => {
@@ -70,7 +73,7 @@ const Login = () => {
 
   if (logInLoading) {
     return (
-      <Content className="log_in">
+      <Content className="log-in">
         <Spin size="large" tip="Logging you in..." />
       </Content>
     )
@@ -82,7 +85,7 @@ const Login = () => {
   }
 
   const logInErrorBannerElement = logInError ? (
-    <ErrorBanner description="We weren't able to log you in. Please try again soon." />
+    <ErrorBanner description="Sorry! We weren't able to log you in. Please try again later!" />
   ) : null
 
   return (
