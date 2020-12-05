@@ -10,6 +10,8 @@ import {
   LogInVariables,
 } from 'utils/mutations/LogIn/__generated__/LogIn'
 import {Viewer} from 'types'
+import {ErrorBanner, Redirect} from 'components'
+import {displaySuccessNotification, displayErrorMessage} from 'utils'
 
 const initialViewer: Viewer = {
   id: null,
@@ -58,21 +60,34 @@ const Login = () => {
       const {data} = await client.query<AuthUrlData>({
         query: AUTH_URL,
       })
-      console.log({data})
       window.location.href = data.authUrl
-    } catch {}
+    } catch {
+      displayErrorMessage(
+        "Sorry! We weren't able to log you in. Please try again later!",
+      )
+    }
   }
 
   if (logInLoading) {
     return (
-      <Content className="log-in">
+      <Content className="log_in">
         <Spin size="large" tip="Logging you in..." />
       </Content>
     )
   }
 
+  if (logInData && logInData.logIn) {
+    const {id: viewerId} = logInData.logIn
+    return <Redirect to={`/user/${viewerId}`} />
+  }
+
+  const logInErrorBannerElement = logInError ? (
+    <ErrorBanner description="We weren't able to log you in. Please try again soon." />
+  ) : null
+
   return (
     <Content className={styles.log_in}>
+      {logInErrorBannerElement}
       <Card className={styles.log_in_card}>
         <div className={styles.log_in_card__intro}>
           <Title level={3} className={styles.log_in_card__intro_title}>
