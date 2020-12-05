@@ -5,13 +5,9 @@ interface Props {
   description?: string
 }
 
-const defaulMessage = 'Uh oh! Something went wrong :('
-const defaultDescrition =
-  'Look like something went wrong. Please check your connection and/or try again later.'
-
 export const ErrorBanner = ({
-  message = defaulMessage,
-  description = defaultDescrition,
+  message = 'Uh oh! Something went wrong :(',
+  description = 'Look like something went wrong. Please check your connection and/or try again later.',
 }: Props) => {
   return (
     <Alert
