@@ -2,10 +2,7 @@
 
 _Next.js + Typescript + GraphQL + MongoDB_
 
-This is a demo project for booking a short term, similar to Airbnb. I chose
-excellent Next.js framework as a baseline which comes with great integration of
-Typescript. I used GraphQl, Apollo and MongoDB to build what a modern,
-production ready stack would look like
+Production-ready home sharing application, inspired by sites like Airbnb.
 
 ## Configuration
 
