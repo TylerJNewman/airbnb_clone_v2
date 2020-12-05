@@ -5,6 +5,10 @@ import {useApollo} from '../utils/apollo'
 import {Viewer} from 'types'
 import Head from 'next/head'
 import {Layout} from 'antd'
+import * as Sentry from '@sentry/react'
+import {init} from 'utils/sentry'
+
+init()
 
 import 'antd/dist/antd.css'
 import '../styles/vars.css'
@@ -19,11 +23,15 @@ const initialViewer: Viewer = {
   didRequest: false,
 }
 
+function FallbackComponent() {
+  return <div>An error has occurred</div>
+}
+
 export default function App({Component, pageProps}: AppProps) {
   const apolloClient = useApollo(pageProps.initialApolloState)
 
   return (
-    <>
+    <Sentry.ErrorBoundary fallback={FallbackComponent} showDialog>
       <Head>
         <link
           rel="icon"
@@ -38,12 +46,12 @@ export default function App({Component, pageProps}: AppProps) {
           sizes="16x16"
         />
         <link rel="manifest" href="/manifest.json" />
-      </Head>
+      </Head>{' '}
       <ApolloProvider client={apolloClient}>
         <Layout id="app">
           <Component {...pageProps} />
         </Layout>
       </ApolloProvider>
-    </>
+    </Sentry.ErrorBoundary>
   )
 }
