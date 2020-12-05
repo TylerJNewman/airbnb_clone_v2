@@ -13,7 +13,7 @@ interface Props {
   setViewer: (viewer: Viewer) => void
 }
 
-const logoSrc = '/favicon-32x32.png'
+const logoSrc = '/home_away.png'
 
 export const AppHeader = ({viewer, setViewer}) => {
   return (
