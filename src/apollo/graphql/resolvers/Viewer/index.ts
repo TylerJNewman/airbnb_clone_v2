@@ -2,6 +2,7 @@ import {IResolvers} from 'apollo-server-micro'
 import {Google} from 'apollo/lib/apis/Google'
 import {Database, User, Viewer} from 'apollo/lib/types'
 import crypto from 'crypto'
+import {LogInVariables} from 'utils/mutations/LogIn/__generated__/LogIn'
 
 const logInViaGoogle = async (
   code: string,
@@ -91,7 +92,7 @@ export const viewerResolvers: IResolvers = {
   Mutation: {
     logIn: async (
       _root: undefined,
-      {input}: LogInArgs,
+      {input}: LogInVariables,
       {db}: {db: Database},
     ): Promise<Viewer> => {
       try {
