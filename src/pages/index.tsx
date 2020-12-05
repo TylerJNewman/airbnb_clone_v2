@@ -23,9 +23,7 @@ const Index = () => {
   // const {
   //   data: {listings},
   // } = useQuery(ListingsQuery)
-  const listings = null
-
-  if (!listings) return <>no listings</>
+  return <h2>Home</h2>
 
   // return <Listings title="Airbnb Clone Listings" />
 }
