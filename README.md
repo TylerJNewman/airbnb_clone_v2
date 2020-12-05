@@ -168,17 +168,17 @@ To deploy your local project to Vercel, push it to GitHub/GitLab/Bitbucket and
 
 ## Built With
 
-| Technology                                       | Description                                 |
-| ------------------------------------------------ | ------------------------------------------- |
-| [Node.js](https://www.npmjs.com/)                | Runtime environment and npm package manager |
-| [Nextjs](https://nextjs.org/)                    | React Product Framework                     |
-| [MongoDB](https://www.mongodb.com/)              | Document database                           |
-| [Apollo GaphQL](https://www.apollographql.com/)  | Platform for buidling Data Graph            |
-| [React](https://reactjs.org/)                    | Used to build main components               |
-| [Sentry](https://sentry.io/)                     | Cloud-based error monitoring                |
-| [Stripe](https://www.docker.com/)                | Payment processing platform                 |
-| [Typescript](https://typescriptlang.org/)        | Language for application-scale JavaScript   |
-| [Ant Design](https://ant.design/)                | Design system for enterprise-level products |
-| [Vercel](https://vercel.com/)                    | Cloud Platform to deploy instantly          |
-| [Ant Design](https://ant.design/)                | Design system for enterprise-level products |
-| [Google Sign-in](https://developers.google.com/) | OAuth 2.0 flow and token lifecycle          |
+| Technology                                                                   | Description                                 |
+| ---------------------------------------------------------------------------- | ------------------------------------------- |
+| [Node.js](https://www.npmjs.com/)                                            | Runtime environment and npm package manager |
+| [Nextjs](https://nextjs.org/)                                                | React Product Framework                     |
+| [MongoDB](https://www.mongodb.com/)                                          | Document database                           |
+| [Apollo GaphQL](https://www.apollographql.com/)                              | Platform for buidling Data Graph            |
+| [React](https://reactjs.org/)                                                | Used to build main components               |
+| [Sentry](https://sentry.io/)                                                 | Cloud-based error monitoring                |
+| [Stripe](https://www.docker.com/)                                            | Payment processing platform                 |
+| [Typescript](https://typescriptlang.org/)                                    | Language for application-scale JavaScript   |
+| [Ant Design](https://ant.design/)                                            | Design system for enterprise-level products |
+| [Vercel](https://vercel.com/)                                                | Cloud Platform to deploy instantly          |
+| [Ant Design](https://ant.design/)                                            | Design system for enterprise-level products |
+| [Google Sign-in](https://developers.google.com/identity/sign-in/web/sign-in) | OAuth 2.0 flow and token lifecycle          |
