@@ -73,7 +73,7 @@ export const Login = () => {
 
   if (logInLoading) {
     return (
-      <Content className="log-in">
+      <Content className={styles.log_in}>
         <Spin size="large" tip="Logging you in..." />
       </Content>
     )
