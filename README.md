@@ -34,7 +34,7 @@ Set each variable on `.env`:
 
 Install dependencies for the project with
 
-```
+```bash
 npm install
 ```
 
@@ -48,8 +48,18 @@ yarn
 
 And run the seed file with:
 
-```
+```bash
 npm run seed
+# or
+yarn seed
+```
+
+If you need to seed against you can clear the database first with:
+
+```bash
+npm run clear
+# or
+yarn clear
 ```
 
 Then, run the development server:
