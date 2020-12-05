@@ -1,10 +1,23 @@
-import React from 'react'
-import {useApolloClient} from '@apollo/client'
-import {Card, Layout, Typography} from 'antd'
+import * as React from 'react'
+import {useApolloClient, useMutation} from '@apollo/client'
+import {Card, Layout, Spin, Typography} from 'antd'
 import styles from '../styles/pages/login.module.css'
-// import {LOG_IN} from 'utils/mutations/LogIn'
+import {LOG_IN} from 'utils/mutations/LogIn'
 import {AUTH_URL} from 'utils/queries/AuthUrl'
 import {AuthUrl as AuthUrlData} from 'utils/queries/AuthUrl/__generated__/AuthUrl'
+import {
+  LogIn as LogInData,
+  LogInVariables,
+} from 'utils/mutations/LogIn/__generated__/LogIn'
+import {Viewer} from 'types'
+
+const initialViewer: Viewer = {
+  id: null,
+  token: null,
+  avatar: null,
+  hasWallet: null,
+  didRequest: false,
+}
 
 // Image Assets
 const googleLogo = '/google_logo.jpg'
@@ -13,7 +26,32 @@ const {Content} = Layout
 const {Text, Title} = Typography
 
 const Login = () => {
+  const [viewer, setViewer] = React.useState<Viewer>(initialViewer)
   const client = useApolloClient()
+
+  const [
+    logIn,
+    {data: logInData, loading: logInLoading, error: logInError},
+  ] = useMutation<LogInData, LogInVariables>(LOG_IN, {
+    onCompleted: (data) => {
+      if (data && data.logIn) {
+        setViewer(data.logIn)
+      }
+    },
+  })
+
+  const logInRef = React.useRef(logIn)
+
+  React.useEffect(() => {
+    const code = new URL(window.location.href).searchParams.get('code')
+    if (code) {
+      logInRef.current({
+        variables: {
+          input: {code},
+        },
+      })
+    }
+  }, [])
 
   const handleAuthorize = async () => {
     try {
@@ -25,22 +63,13 @@ const Login = () => {
     } catch {}
   }
 
-  // const [
-  //   logIn,
-  //   {data: logInData, loading: logInLoading, error: logInError},
-  // ] = useMutation<LogInData, LogInVariables>(LOG_IN)
-  // const logInRef = React.useRef(logIn)
-
-  // React.useEffect(() => {
-  //   const code = new URL(window.location.href).searchParams.get('code')
-  //   if (code) {
-  //     logInRef.current({
-  //       variables: {
-  //         input: {code},
-  //       },
-  //     })
-  //   }
-  // }, [])
+  if (logInLoading) {
+    return (
+      <Content className="log-in">
+        <Spin size="large" tip="Logging you in..." />
+      </Content>
+    )
+  }
 
   return (
     <Content className={styles.log_in}>

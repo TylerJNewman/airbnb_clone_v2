@@ -1,7 +1,6 @@
 import * as React from 'react'
 import {AppProps} from 'next/app'
 import {ApolloProvider} from '@apollo/client'
-import {Provider} from 'next-auth/client'
 import {useApollo} from '../utils/apollo'
 import {Viewer} from 'types'
 import Head from 'next/head'
@@ -23,7 +22,6 @@ const initialViewer: Viewer = {
 export default function App({Component, pageProps}: AppProps) {
   const apolloClient = useApollo(pageProps.initialApolloState)
 
-  const [viewer, setViewer] = React.useState<Viewer>(initialViewer)
   return (
     <>
       <Head>
@@ -41,13 +39,11 @@ export default function App({Component, pageProps}: AppProps) {
         />
         <link rel="manifest" href="/manifest.json" />
       </Head>
-      <Provider session={pageProps.session}>
-        <ApolloProvider client={apolloClient}>
-          <Layout id="app">
-            <Component {...pageProps} />
-          </Layout>
-        </ApolloProvider>
-      </Provider>
+      <ApolloProvider client={apolloClient}>
+        <Layout id="app">
+          <Component {...pageProps} />
+        </Layout>
+      </ApolloProvider>
     </>
   )
 }

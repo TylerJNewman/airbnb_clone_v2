@@ -3,21 +3,21 @@ import gql from 'graphql-tag'
 import {useQuery} from '@apollo/client'
 import {connectToDatabase} from 'apollo/database'
 
-const ListingsQuery = gql`
-  query ListingsQuery {
-    listings {
-      id
-      title
-      image
-      address
-      price
-      numOfGuests
-      numOfBeds
-      numOfBaths
-      rating
-    }
-  }
-`
+// const ListingsQuery = gql`
+//   query ListingsQuery {
+//     listings {
+//       id
+//       title
+//       image
+//       address
+//       price
+//       numOfGuests
+//       numOfBeds
+//       numOfBaths
+//       rating
+//     }
+//   }
+// `
 
 const Index = () => {
   // const {
@@ -27,7 +27,7 @@ const Index = () => {
 
   if (!listings) return <>no listings</>
 
-  return <Listings title="Airbnb Clone Listings" />
+  // return <Listings title="Airbnb Clone Listings" />
 }
 
 // export async function getServerSideProps() {
