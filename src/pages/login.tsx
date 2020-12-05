@@ -24,15 +24,14 @@ const initialViewer: Viewer = {
 // Image Assets
 const googleLogo = '/google_logo.jpg'
 
+const {Content} = Layout
+const {Text, Title} = Typography
+
 interface Props {
   setViewer: (viewer: Viewer) => void
 }
 
-const {Content} = Layout
-const {Text, Title} = Typography
-
-export const Login = () => {
-  const [viewer, setViewer] = React.useState<Viewer>(initialViewer)
+export const Login = ({setViewer}: Props) => {
   const client = useApolloClient()
   const [
     logIn,

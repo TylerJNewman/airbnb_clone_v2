@@ -1,4 +1,5 @@
 import {Alert} from 'antd'
+import styles from './ErrorBanner.module.css'
 
 interface Props {
   message?: string
@@ -16,7 +17,7 @@ export const ErrorBanner = ({
       message={message}
       description={description}
       type="error"
-      className="error-banner"
+      className={styles.error_banner}
     />
   )
 }
