@@ -5,7 +5,7 @@ _Next.js + Typescript + GraphQL + MongoDB_
 Production-ready home sharing application, inspired by sites like Airbnb. The
 Next.js framework comes with hybrid static & server rendering, TypeScript
 support, smart bundling, route pre-fetching, and more. GraphQl, Apollo and
-MongoDB provides an expressive to query, load and cache data.
+MongoDB provides an expressive and efficient way to query, load and cache data.
 
 ## Configuration
 
