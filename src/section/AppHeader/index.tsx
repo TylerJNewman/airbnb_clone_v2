@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import {Layout} from 'antd'
-import {HomeOutlined} from '@ant-design/icons'
 import React from 'react'
 import {MenuItems} from 'section'
 import {Viewer} from 'types'
