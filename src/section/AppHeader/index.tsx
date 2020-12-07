@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import {Layout} from 'antd'
 import React from 'react'
-import {MenuItems} from 'section'
+import {MenuItems} from 'components'
 import {Viewer} from 'types'
 import styles from './AppHeader.module.css'
 
