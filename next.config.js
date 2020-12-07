@@ -24,7 +24,7 @@ const COMMIT_SHA =
 process.env.SENTRY_DSN = SENTRY_DSN
 const basePath = ''
 
-const baseConfig = {
+const sourceMapsConfig = {
   env: {
     // Make the COMMIT_SHA available to the client so that Sentry events can be
     // marked for the release the belong to. It may be undefined if running
@@ -88,11 +88,12 @@ const baseConfig = {
   basePath,
 }
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
+const withBundleAnalyzer = require('@next/bundle-analyzer')
+const withBundleAnalyzerConfig = {
   enabled: process.env.ANALYZE === 'true',
-})
+}
 
-module.exports = withPlugins(
-  [[withSourceMaps], [withBundleAnalyzer]],
-  baseConfig,
-)
+module.exports = withPlugins([
+  [withSourceMaps, sourceMapsConfig],
+  [withBundleAnalyzer, withBundleAnalyzerConfig],
+])
