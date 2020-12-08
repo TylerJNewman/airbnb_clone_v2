@@ -1,9 +1,10 @@
+// https://github.com/zeit/next.js/blob/master/examples/api-routes-middleware/utils/cookies.js
+import cookies from 'apollo/lib/cookies'
 import {ApolloServer, ApolloError} from 'apollo-server-micro'
 import {connectToDatabase} from 'apollo/database'
 import {schema} from 'utils/schema'
 import * as Sentry from '@sentry/node'
 import {init} from 'utils/sentry'
-
 init()
 
 const apolloServer = new ApolloServer({
@@ -75,4 +76,6 @@ export const config = {
   },
 }
 
-export default apolloServer.createHandler({path: '/api'})
+const handler = apolloServer.createHandler({path: '/api'})
+
+export default cookies(handler)
