@@ -544,19 +544,8 @@ html {
   background: #fff;
   min-height: 100vh;
 }
-.app-skeleton {
-  height: 100%;
-  background: #fff;
-  display: flex;
-}
-.app-skeleton__spin-section {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.app__affix-header {
+
+.app__affix_header {
   z-index: 99;
 }
 .app__affix-footer {
