@@ -39,8 +39,14 @@ const App = ({Component, pageProps}: AppProps) => {
   const [viewer, setViewer] = React.useState<Viewer>(initialViewer)
   const [logIn, {error}] = useMutation<LogInData, LogInVariables>(LOG_IN, {
     onCompleted: (data) => {
-      if (data?.logIn) {
+      if (data && data.logIn) {
         setViewer(data.logIn)
+
+        if (data.logIn.token) {
+          sessionStorage.setItem('token', data.logIn.token)
+        } else {
+          sessionStorage.removeItem('token')
+        }
       }
     },
   })

@@ -4,6 +4,9 @@ import {
   ApolloClient,
   InMemoryCache,
   NormalizedCacheObject,
+  ApolloLink,
+  concat,
+  HttpLink,
 } from '@apollo/client'
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined
@@ -13,17 +16,27 @@ export type ResolverContext = {
   res?: ServerResponse
 }
 
+const httpLink = new HttpLink({uri: '/api', credentials: 'same-origin'})
+
+const authMiddleware = new ApolloLink((operation, forward) => {
+  const token = sessionStorage.getItem('token')
+  // add the authorization to the headers
+  operation.setContext({
+    headers: {
+      authorization: token ?? null,
+    },
+  })
+
+  return forward(operation)
+})
+
 function createIsomorphLink(context: ResolverContext = {}) {
   if (typeof window === 'undefined') {
     const {SchemaLink} = require('@apollo/client/link/schema')
     const {schema} = require('./schema')
     return new SchemaLink({schema, context})
   } else {
-    const {HttpLink} = require('@apollo/client')
-    return new HttpLink({
-      uri: '/api',
-      credentials: 'same-origin',
-    })
+    return concat(authMiddleware, httpLink)
   }
 }
 
