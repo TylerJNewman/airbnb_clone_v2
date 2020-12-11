@@ -1,12 +1,14 @@
 import {IResolvers} from 'apollo-server-micro'
 import {Database, User} from 'apollo/lib/types'
-// import {authorize} from 'apollo/lib/utils'
+import {authorize} from 'apollo/lib/utils/index.ts'
 import {NextApiRequest} from 'next'
-import {UserArgs, UserBookingsArgs, UserBookingsData} from './types'
-
-async function authorize(rdb: Database, req: NextApiRequest) {
-  console.log('hello')
-}
+import {
+  UserArgs,
+  UserBookingsArgs,
+  UserBookingsData,
+  UserListingsArgs,
+  UserListingsData,
+} from './types'
 
 export const userResolvers: IResolvers = {
   Query: {
@@ -20,9 +22,10 @@ export const userResolvers: IResolvers = {
         if (!user) {
           throw new Error("user can't be found")
         }
-        console.log('here')
+        console.log('here', {db})
+        console.log({authorize})
         const viewer = await authorize(db, req)
-        console.log('not here')
+        console.log({viewer})
         if (viewer && viewer._id === user._id) {
           user.authorized = true
         }

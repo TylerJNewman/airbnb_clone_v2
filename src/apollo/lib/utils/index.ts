@@ -6,12 +6,13 @@ export const authorize = async (
   req: NextApiRequest,
 ): Promise<User | null> => {
   console.log('entered Authorize function')
-  console.log({req})
+  console.log({req, db})
   const token = req.headers.authorization
   const viewer = await db.users.findOne({
     _id: req.cookies.view,
     token,
   })
 
-  return viewer
+  // return viewer
+  return null
 }
