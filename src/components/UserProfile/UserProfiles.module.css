@@ -1,0 +1,20 @@
+.user_profile {
+  max-width: 400px;
+  margin: 0 auto;
+  display: block;
+}
+.user_profile__card {
+  width: 100%;
+}
+.user_profile__avatar {
+  text-align: center;
+}
+.user_profile__details h4.ant_typography {
+  color: #1d226c;
+}
+.user_profile__details div.ant_typography {
+  font-size: 15px;
+}
+.user_profile__details_cta {
+  margin-bottom: 20px;
+}

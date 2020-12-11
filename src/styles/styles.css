@@ -501,35 +501,7 @@
 .user-listings__description.ant-typography {
   font-size: 15px;
 }
-.user-profile {
-  max-width: 400px;
-  margin: 0 auto;
-  display: block;
-}
-.user-profile__card {
-  width: 100%;
-}
-.user-profile__avatar {
-  text-align: center;
-}
-.user-profile__details h4.ant-typography {
-  color: #1d226c;
-}
-.user-profile__details div.ant-typography {
-  font-size: 15px;
-}
-.user-profile__details-cta {
-  margin-bottom: 20px;
-}
-.user {
-  padding: 60px 120px;
-}
-@media (max-width: 75em) {
-  .user {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-}
+
 html {
   overflow: auto;
 }
