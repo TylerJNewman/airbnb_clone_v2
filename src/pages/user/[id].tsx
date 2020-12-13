@@ -32,7 +32,7 @@ const User = ({viewer}: Props) => {
 
   if (loading) {
     return (
-      <Content className="user">
+      <Content className={styles.user}>
         <PageSkeleton />
       </Content>
     )
@@ -40,7 +40,7 @@ const User = ({viewer}: Props) => {
 
   if (error) {
     return (
-      <Content className="user">
+      <Content className={styles.user}>
         <ErrorBanner description="This user may not exist or we've encountered an error. Please try again soon." />
         <PageSkeleton />
       </Content>
