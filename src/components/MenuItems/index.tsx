@@ -62,7 +62,7 @@ export const MenuItems = ({viewer, setViewer}: Props) => {
     )
 
   return (
-    <Menu mode="horizontal" selectable={false} className={styles.menu}>
+    <Menu mode="horizontal" selectable={false} className={styles.root}>
       <Item key="/host">
         <Link href="/host">
           <a>

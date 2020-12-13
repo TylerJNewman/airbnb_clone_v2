@@ -4,11 +4,7 @@ import styles from './PageSkeleton.module.css'
 
 export const PageSkeleton = () => {
   const skeletonParagraph = (
-    <Skeleton
-      active
-      paragraph={{rows: 4}}
-      className={styles.page_skeleton__paragraph}
-    />
+    <Skeleton active paragraph={{rows: 4}} className={styles.paragraph} />
   )
 
   return (

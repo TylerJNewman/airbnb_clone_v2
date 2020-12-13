@@ -1,0 +1,26 @@
+.root {
+  padding-top: 40px;
+}
+.title.ant-typography {
+  color: #1d226c;
+  display: inline-block;
+}
+.description.ant-typography {
+  font-size: 15px;
+}
+.user_bookings .ant-list-pagination {
+  padding-bottom: 20px;
+}
+.booking_item {
+  margin: 20px 0;
+}
+.booking_history {
+  margin-bottom: 20px;
+}
+.booking_history > div {
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+.booking_stars {
+  font-size: 13px;
+}

@@ -1,9 +1,9 @@
-.app_skeleton {
+.root {
   height: 100%;
   background: #fff;
   display: flex;
 }
-.app_skeleton__spin_section {
+.spin_section {
   height: 100%;
   display: flex;
   flex-direction: column;

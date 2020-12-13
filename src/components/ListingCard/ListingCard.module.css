@@ -1,0 +1,51 @@
+.cover_img {
+  width: 100%;
+  height: 195px;
+  background-size: cover;
+  background-position: 50%;
+}
+.rating_tag {
+  position: absolute;
+  top: 5px;
+  right: 0;
+}
+.description {
+  padding-bottom: 20px;
+}
+.price.ant-typography {
+  color: #1d226c;
+}
+.price.ant-typography span {
+  color: #bfbfbf;
+  font-weight: 400;
+}
+.title.ant-typography,
+.address.ant-typography {
+  display: block;
+}
+.dimensions i,
+.dimensions span {
+  padding-right: 10px;
+  font-size: 13px;
+}
+.dimensions span {
+  color: #bfbfbf;
+}
+.dimensions__guests {
+  float: right;
+}
+.dimensions__guests span {
+  padding-right: 0;
+}
+@media (max-width: 75em) {
+  .dimensions__guests {
+    float: none;
+    padding-bottom: 5px;
+  }
+}
+@media (max-width: 48em) {
+  .dimensions__guests {
+    float: right;
+    padding-bottom: 0;
+  }
+}

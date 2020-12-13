@@ -5,9 +5,9 @@ import styles from './LayoutWithSkeleton.module.css'
 
 export const LayoutWithSkeleton = React.memo(() => {
   return (
-    <Layout className={styles.app_skeleton}>
+    <Layout className={styles.root}>
       <AppHeaderSkeleton />
-      <div className={styles.app_skeleton__spin_section}>
+      <div className={styles.spin_section}>
         <Spin size="large" tip="Launching Homeaway" />
       </div>
     </Layout>

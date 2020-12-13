@@ -24,7 +24,7 @@ export const UserProfile = ({user, viewerIsUser}: Props) => {
           Connect with Stripe!
         </Button>
         <Paragraph type="secondary">
-          TinyHouse uses{' '}
+          HomeAway uses{' '}
           <a
             href="https://stripe.com/en-US/connect"
             target="_blank"

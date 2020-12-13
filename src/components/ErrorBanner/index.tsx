@@ -17,7 +17,7 @@ export const ErrorBanner = ({
       message={message}
       description={description}
       type="error"
-      className={styles.error_banner}
+      className={styles.root}
     />
   )
 }

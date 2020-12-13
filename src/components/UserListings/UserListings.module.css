@@ -1,0 +1,13 @@
+.root {
+  padding-top: 40px;
+}
+.title.ant-typography {
+  color: #1d226c;
+  display: inline-block;
+}
+.ant-list-pagination {
+  padding-bottom: 20px;
+}
+.description.ant-typography {
+  font-size: 15px;
+}
