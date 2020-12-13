@@ -12,15 +12,15 @@
 .description {
   padding-bottom: 20px;
 }
-.price.ant-typography {
+.price {
   color: #1d226c;
 }
-.price.ant-typography span {
+.price span {
   color: #bfbfbf;
   font-weight: 400;
 }
-.title.ant-typography,
-.address.ant-typography {
+.title,
+.address {
   display: block;
 }
 .dimensions i,
