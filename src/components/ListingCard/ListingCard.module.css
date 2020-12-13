@@ -21,7 +21,7 @@
 }
 .title,
 .address {
-  display: block;
+  display: block !important;
 }
 .dimensions i,
 .dimensions span {

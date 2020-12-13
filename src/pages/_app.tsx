@@ -1,4 +1,3 @@
-/// <reference types="@welldone-software/why-did-you-render" />
 import * as React from 'react'
 import {AppProps} from 'next/app'
 import {ApolloProvider, useMutation} from '@apollo/client'

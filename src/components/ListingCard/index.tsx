@@ -22,35 +22,39 @@ export const ListingCard = ({listing}: Props) => {
   const {id, title, image, address, price, numOfGuests} = listing
 
   return (
-    <Link href={`/listing/${id}`}>
-      <Card
-        hoverable
-        cover={
-          <div
-            style={{backgroundImage: `url(${image})`}}
-            className={styles.cover_img}
-          />
-        }
-      >
-        <div className={styles.details}>
-          <div className={styles.description}>
-            <Title level={4} className={styles.price}>
-              {formatListingPrice(price)}
-              <span>/day</span>
-            </Title>
-            <Text strong ellipsis className={styles.title}>
-              {title}
-            </Text>
-            <Text ellipsis className={styles.address}>
+    <Link href={`/listing/${id}`} passHref>
+      <a>
+        <Card
+          hoverable
+          cover={
+            <div
+              style={{backgroundImage: `url(${image})`}}
+              className={styles.cover_img}
+            />
+          }
+        >
+          <div className={styles.details}>
+            <div className={styles.description}>
+              <Title level={4} className={styles.price}>
+                {formatListingPrice(price)}
+                <span>/day</span>
+              </Title>
+              <Text strong ellipsis className={styles.title}>
+                {title}
+              </Text>
+              {/* <Text ellipsis className={styles.address}>
               {address}
-            </Text>
+            </Text> */}
+            </div>
+            <div
+              className={`${styles.dimensions} ${styles.dimensions__guests}`}
+            >
+              <UserOutlined style={{color: iconColor}} />
+              <Text>{numOfGuests} guests</Text>
+            </div>
           </div>
-          <div className={`${styles.dimensions} ${styles.dimensions__guests}`}>
-            <UserOutlined style={{color: iconColor}} />
-            <Text>{numOfGuests} guests</Text>
-          </div>
-        </div>
-      </Card>
+        </Card>
+      </a>
     </Link>
   )
 }
