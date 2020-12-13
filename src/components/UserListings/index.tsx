@@ -23,11 +23,21 @@ export const UserListings = ({
 
   const userListingsList = (
     <List
+      // grid={{
+      //   gutter: 8,
+      //   xs: 1,
+      //   sm: 2,
+      //   lg: 4,
+      // }}
+      // for some reason need to specify all
       grid={{
         gutter: 8,
         xs: 1,
         sm: 2,
+        md: 2,
         lg: 4,
+        xl: 4,
+        xxl: 4,
       }}
       dataSource={result}
       locale={{emptyText: "User doesn't have any listings yet!"}}
@@ -39,6 +49,7 @@ export const UserListings = ({
         hideOnSinglePage: true,
         showLessItems: true,
         onChange: (page: number) => setListingsPage(page),
+        style: {paddingBottom: 20},
       }}
       renderItem={(userListing) => (
         <List.Item>

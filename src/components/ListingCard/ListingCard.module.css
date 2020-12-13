@@ -49,3 +49,18 @@
     padding-bottom: 0;
   }
 }
+
+.details {
+  /* display: none; */
+}
+
+/* @media (max-width: 75em) {
+  .details {
+    max-width: 100px;
+  }
+}
+@media (max-width: 48em) {
+  .details {
+    max-width: 100px;
+  }
+} */

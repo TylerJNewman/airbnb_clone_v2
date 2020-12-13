@@ -15,7 +15,7 @@ body {
   -ms-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+  /* text-rendering: optimizeLegibility; */
 }
 
 #__next {

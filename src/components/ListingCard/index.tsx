@@ -42,9 +42,9 @@ export const ListingCard = ({listing}: Props) => {
               <Text strong ellipsis className={styles.title}>
                 {title}
               </Text>
-              {/* <Text ellipsis className={styles.address}>
-              {address}
-            </Text> */}
+              <Text ellipsis className={styles.address}>
+                {address}
+              </Text>
             </div>
             <div
               className={`${styles.dimensions} ${styles.dimensions__guests}`}
