@@ -1,6 +1,7 @@
 import {IResolvers} from 'apollo-server-micro'
 import {Database, User} from 'apollo/lib/types'
-import {authorize} from 'apollo/lib/utils/index'
+//TODO: figure out why i cannot do indext.ts pattern
+import {authorize} from 'apollo/lib/utils/authorize'
 import {NextApiRequest} from 'next'
 import {
   UserArgs,
