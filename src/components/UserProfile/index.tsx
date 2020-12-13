@@ -17,7 +17,7 @@ export const UserProfile = ({user, viewerIsUser}: Props) => {
       <div className={styles.user_profile__details}>
         <Title level={4}>Additional Details</Title>
         <Paragraph>
-          Interested in becoming a TinyHouse host? Register with your Stripe
+          Interested in becoming a HomeAway host? Register with your Stripe
           account!
         </Paragraph>
         <Button type="primary" className={styles.user_profile__details_cta}>
