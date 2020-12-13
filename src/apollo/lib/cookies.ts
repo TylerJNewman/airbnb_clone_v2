@@ -1,4 +1,9 @@
-import {serialize, CookieSerializeOptions, parse} from 'cookie'
+import {
+  serialize,
+  CookieSerializeOptions,
+  CookieParseOptions,
+  parse,
+} from 'cookie'
 import {NextApiResponse, NextApiRequest} from 'next'
 import signature from 'cookie-signature'
 
@@ -87,10 +92,7 @@ const cookies = (handler: handler, _secret?: string) => (
  * @public
  */
 
-export function cookieParser(
-  secret: string,
-  options: CookieSerializeOptions = {},
-) {
+export function cookieParser(secret: string, options: CookieParseOptions = {}) {
   const secrets = !secret || Array.isArray(secret) ? secret || [] : [secret]
 
   return function cookieParser(

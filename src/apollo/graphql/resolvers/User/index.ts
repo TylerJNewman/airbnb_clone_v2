@@ -1,7 +1,6 @@
 import {IResolvers} from 'apollo-server-micro'
 import {Database, User} from 'apollo/lib/types'
-// TODO: fix this import below
-import {authorize} from 'apollo/lib/utils/index.ts'
+import {authorize} from 'apollo/lib/utils/index'
 import {NextApiRequest} from 'next'
 import {
   UserArgs,

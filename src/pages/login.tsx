@@ -13,14 +13,6 @@ import {Viewer} from 'types'
 import {ErrorBanner, Redirect} from 'components'
 import {displaySuccessNotification, displayErrorMessage} from 'utils'
 
-const initialViewer: Viewer = {
-  id: null,
-  token: null,
-  avatar: null,
-  hasWallet: null,
-  didRequest: false,
-}
-
 // Image Assets
 const googleLogo = '/google_logo.jpg'
 
@@ -38,10 +30,9 @@ export const Login = ({setViewer}: Props) => {
     {data: logInData, loading: logInLoading, error: logInError},
   ] = useMutation<LogInData, LogInVariables>(LOG_IN, {
     onCompleted: (data) => {
-      if (data && data.logOut) {
-        setViewer(data.logOut)
-        sessionStorage.removeItem('token')
-        displaySuccessNotification("You've successfully logged out!")
+      if (data && data.logIn) {
+        setViewer(data.logIn)
+        displaySuccessNotification("You've successfully logged in!")
       }
     },
   })
