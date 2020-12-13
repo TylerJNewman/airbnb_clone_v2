@@ -10,6 +10,7 @@ import {Col, Layout, Row} from 'antd'
 import {UserProfile} from '@/components/UserProfile'
 import styles from 'styles/pages/user.module.css'
 import {Viewer} from 'types'
+import {PageSkeleton, ErrorBanner} from 'components'
 
 const {Content} = Layout
 
@@ -28,6 +29,23 @@ const User = ({viewer}: Props) => {
       id,
     },
   })
+
+  if (loading) {
+    return (
+      <Content className="user">
+        <PageSkeleton />
+      </Content>
+    )
+  }
+
+  if (error) {
+    return (
+      <Content className="user">
+        <ErrorBanner description="This user may not exist or we've encountered an error. Please try again soon." />
+        <PageSkeleton />
+      </Content>
+    )
+  }
 
   const user = data?.user ?? null
   const viewerIsUser = viewer.id === id
