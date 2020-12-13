@@ -49,7 +49,10 @@ export const ListingCard = ({listing}: Props) => {
             <div
               className={`${styles.dimensions} ${styles.dimensions__guests}`}
             >
-              <UserOutlined style={{color: iconColor}} />
+              <UserOutlined
+                style={{color: iconColor}}
+                className={styles.icon}
+              />
               <Text>{numOfGuests} guests</Text>
             </div>
           </div>
