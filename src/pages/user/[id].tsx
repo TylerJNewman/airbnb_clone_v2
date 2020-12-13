@@ -9,10 +9,15 @@ import {
 import {Col, Layout, Row} from 'antd'
 import {UserProfile} from '@/components/UserProfile'
 import styles from 'styles/pages/user.module.css'
+import {Viewer} from 'types'
 
 const {Content} = Layout
 
-const User = () => {
+interface Props {
+  viewer: Viewer
+}
+
+const User = ({viewer}: Props) => {
   const router = useRouter()
   const id = Array.isArray(router.query.id)
     ? router.query.id[0]
@@ -24,8 +29,11 @@ const User = () => {
     },
   })
 
-  const user = data ? data.user : null
-  const userProfileElement = user ? <UserProfile user={user} /> : null
+  const user = data?.user ?? null
+  const viewerIsUser = viewer.id === id
+  const userProfileElement = user ? (
+    <UserProfile user={user} viewerIsUser={viewerIsUser} />
+  ) : null
 
   return (
     <Content className={styles.user}>
